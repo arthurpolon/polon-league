@@ -20,7 +20,7 @@
       "~contexts/*": ["src/contexts/*"],
       "~components/*": ["src/components/*"],
       "~styles/*": ["src/styles/*"],
-      "~services/*": ["src/services/*"],
+      "~api/*": ["src/api/*"],
       "~constants/*": ["src/constants/*"],
       "~utils/*": ["src/utils/*"],
       "~hooks/*": ["src/hooks/*"],
@@ -29,5 +29,6 @@
   },
 
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "files": ["src/styles/styled.d.ts"]
 }
