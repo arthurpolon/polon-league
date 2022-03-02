@@ -1,14 +1,30 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import Head from 'next/head'
 import { useState } from 'react'
+import clone from '~utils/clone'
 
 const Home = () => {
   const [input, setInput] = useState('')
+  const [output, setOutput] = useState('')
 
   const onClick = async () => {
-    const response = await axios.get(`/api/summoner-by-name/${input}`)
+    try {
+      const response = await axios.get(`/api/summoner-by-name/${input}`)
 
-    console.log(response)
+      setOutput(JSON.stringify(response))
+    } catch (e) {
+      if (e.isAxiosError) {
+        const error: AxiosError = clone(e)
+
+        switch (error.response.status) {
+          case 404:
+            setOutput('Summoner not found')
+            break
+          default:
+            setOutput('An error ocurred')
+        }
+      }
+    }
   }
 
   return (
@@ -29,6 +45,7 @@ const Home = () => {
         <button onClick={onClick} type='button'>
           Click to search
         </button>
+        {output}
       </main>
     </div>
   )
