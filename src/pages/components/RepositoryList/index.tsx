@@ -19,7 +19,7 @@ class RepositoryList extends Component<Props> {
   componentDidMount(): void {
     const { request } = this.props
 
-    request('gabrielnbds')
+    request('arthurpolon')
   }
 
   render() {

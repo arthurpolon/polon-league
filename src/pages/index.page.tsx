@@ -3,9 +3,11 @@ import { useState } from 'react'
 import clone from '~utils/clone'
 import RepositoryList from './components/RepositoryList'
 
-const Home = () => {
+const Home = (props) => {
   const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
+
+  console.log(props)
 
   const onClick = async () => {
     try {
