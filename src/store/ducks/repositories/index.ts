@@ -1,5 +1,6 @@
-import { Reducer } from 'redux'
-import { RepositoriesState, RepositoriesTypes } from './types'
+import { Action, createReducer } from 'typesafe-actions'
+import { RepositoriesActions } from './actions'
+import { RepositoriesState } from './types'
 
 const INITIAL_STATE: RepositoriesState = {
   data: [],
@@ -7,22 +8,22 @@ const INITIAL_STATE: RepositoriesState = {
   error: null,
 }
 
-const reducer: Reducer<RepositoriesState> = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
-    case RepositoriesTypes.LOAD_REQUEST:
-      return { ...state, loading: true }
-    case RepositoriesTypes.LOAD_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        error: false,
-        data: action.payload.data,
-      }
-    case RepositoriesTypes.LOAD_FAILURE:
-      return { ...state, loading: false, error: true, data: [] }
-    default:
-      return state
-  }
-}
+const reducer = createReducer<RepositoriesState, Action>(INITIAL_STATE)
+  .handleAction(RepositoriesActions.request, (store) => ({
+    ...store,
+    loading: true,
+  }))
+  .handleAction(RepositoriesActions.success, (store, action) => ({
+    ...store,
+    loading: false,
+    error: false,
+    data: action.payload.data,
+  }))
+  .handleAction(RepositoriesActions.failure, (store) => ({
+    ...store,
+    loading: false,
+    error: true,
+    data: [],
+  }))
 
 export default reducer

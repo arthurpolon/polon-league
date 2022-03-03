@@ -1,13 +1,16 @@
 import { call, put } from 'redux-saga/effects'
 import api from '~services/api'
-import { loadFailure, loadSuccess } from './actions'
+import { RepositoriesActions } from './actions'
 
-export function* load() {
+export function* load(action: ReturnType<typeof RepositoriesActions.request>) {
   try {
-    const response = yield call(api.get, 'users/arthurpolon/repos')
+    const response = yield call(
+      api.get,
+      `users/${action.payload.username}/repos`,
+    )
 
-    yield put(loadSuccess(response.data))
+    yield put(RepositoriesActions.success(response.data))
   } catch (err) {
-    yield put(loadFailure())
+    yield put(RepositoriesActions.failure())
   }
 }
