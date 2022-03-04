@@ -53,6 +53,9 @@
     "consistent-return": "off",
     "implicit-arrow-linebreak": "off",
     "jsx-a11y/iframe-has-title": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react/destructuring-assignment": "off",
+    "no-empty-function": "off",
+  "@typescript-eslint/no-empty-function": ["off"]
   }
 }

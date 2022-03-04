@@ -20,7 +20,7 @@ export default async function handler(
 
     res.status(response.status).json(response.data)
   } catch (e) {
-    const error = clone(e)
+    const error = JSON.parse(JSON.stringify(e))
     res.status(error.status).json(error)
   }
 }
