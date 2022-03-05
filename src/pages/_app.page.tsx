@@ -1,13 +1,24 @@
 import type { AppProps } from 'next/app'
-import { ThemeProvider } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { light, dark } from '~styles/theme'
 import { wrapper } from '~store/index'
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    color: yellow;
+  }
+`
+
 function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={light}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={light}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
   )
 }
 

@@ -1,7 +1,12 @@
 import axios, { AxiosError } from 'axios'
 import { useState } from 'react'
-import clone from '~utils/clone'
+import styled from 'styled-components'
 import RepositoryList from './components/RepositoryList'
+
+const Title = styled.h1`
+  color: purple;
+  margin-top: 80px;
+`
 
 const Home = (props) => {
   const [input, setInput] = useState('')
@@ -31,6 +36,7 @@ const Home = (props) => {
 
   return (
     <div>
+      <Title>Teste style</Title>
       <RepositoryList />
     </div>
   )
