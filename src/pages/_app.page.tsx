@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { light, dark } from '~styles/theme'
-import { wrapper } from '~store/index'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -22,4 +21,4 @@ function App({ Component, pageProps }: AppProps) {
   )
 }
 
-export default wrapper.withRedux(App)
+export default App
