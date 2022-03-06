@@ -3,7 +3,7 @@ import { useTheme } from '~contexts/themeContext'
 
 const Title = styled.h1`
   margin-top: 100px;
-  color: ${p => p.theme.color};
+  color: ${p => p.theme.textColor};
 `
 
 const Home = () => {

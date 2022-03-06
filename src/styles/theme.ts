@@ -2,13 +2,15 @@ import { DefaultTheme } from 'styled-components'
 import { TTheme } from './types'
 
 export const light: DefaultTheme = {
-  theme: 'light',
-  color: 'yellow',
+  name: 'light',
+  textColor: '#000',
+  background: '#ffffff',
 }
 
 export const dark: DefaultTheme = {
-  theme: 'dark',
-  color: 'gray',
+  name: 'dark',
+  textColor: '#fff',
+  background: '#1E0338',
 }
 
 const Themes: { [key in TTheme]: DefaultTheme } = {

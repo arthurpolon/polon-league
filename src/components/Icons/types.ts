@@ -1,7 +1,10 @@
-export type IconType = 'home' | 'moon' | 'logo'
+export type IconType = 'home' | 'moon' | 'logo' | 'sun'
 
 export interface IIconsProps {
-  iconType: IconType
-  width: number
-  height: number
+  type: IconType
+
+  width?: number
+  height?: number
+
+  color?: string
 }

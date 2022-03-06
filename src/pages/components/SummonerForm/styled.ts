@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import NextImage from 'next/image'
 
 export const Container = styled.div`
-  background-color: white;
+  background-color: ${p => p.theme.background};
   border-radius: 5px;
   width: min(520px, 90vw);
 
@@ -41,6 +41,8 @@ export const SubTitle = styled.span`
 
 export const Input = styled.input`
   width: 100%;
+
+  background-color: ${p => p.theme.background};
 
   border-radius: 8px;
   border: 1px solid #c4c5cc;

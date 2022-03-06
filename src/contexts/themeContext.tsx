@@ -9,6 +9,8 @@ const ThemeContext = createContext<IThemeContext>({} as IThemeContext)
 const ThemeContextProvider: React.FC = props => {
   const [theme, setTheme] = useState<TTheme>('light')
 
+  const isDark = theme === 'dark'
+
   const toggleTheme = () => {
     setTheme(state => (state === 'light' ? 'dark' : 'light'))
   }
@@ -16,7 +18,7 @@ const ThemeContextProvider: React.FC = props => {
   return (
     <>
       <ThemeProvider theme={Themes[theme]}>
-        <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+        <ThemeContext.Provider value={{ theme, isDark, setTheme, toggleTheme }}>
           {props.children}
         </ThemeContext.Provider>
       </ThemeProvider>

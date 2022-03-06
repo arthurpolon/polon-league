@@ -10,12 +10,20 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Mulish', Verdana,'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
+  html {
+    color: ${p => p.theme.textColor}
+  }
+
   button {
     cursor: pointer;
 
     border: none;
     border-radius: 5px;
     padding: 8px 14px;
+  }
+
+  input {
+    color: inherit;
   }
 `
 

@@ -22,7 +22,7 @@ const SummonerForm = () => {
 
   return (
     <Container>
-      <Icons iconType='logo' width={65} height={65} />
+      <Icons type='logo' width={65} height={65} />
       <IconDescription>Polon League</IconDescription>
       <Title>Welcome Summoner</Title>
       <SubTitle>Enter your summoner name to start</SubTitle>

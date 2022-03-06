@@ -1,13 +1,19 @@
-import BackgroundSVG from './images/background.svg'
 import SummonerForm from '~pages/components/SummonerForm'
-import { BackgroundImage, Container } from './styled'
+import { LightBackgroundImage, Container, DarkBackgroundImage } from './styled'
+import BackToHome from './components/BackToHome/BackToHome'
+import ThemeButton from '~pages/components/ThemeButton/ThemeButton'
+import { useTheme } from '~contexts/themeContext'
 
 const Summoner = () => {
+  const { isDark } = useTheme()
+
   return (
     <>
       <Container>
         <SummonerForm />
-        <BackgroundImage src={BackgroundSVG} layout='fill' objectFit='cover' />
+        <BackToHome />
+        <ThemeButton />
+        {isDark ? <DarkBackgroundImage /> : <LightBackgroundImage />}
       </Container>
     </>
   )

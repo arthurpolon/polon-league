@@ -1,5 +1,6 @@
-import NextImage, { ImageProps } from 'next/image'
 import styled from 'styled-components'
+import BackgroundLightSVG from './images/background-light.svg'
+import BackgroundDarkSVG from './images/background-dark.svg'
 
 export const Container = styled.div`
   height: 100vh;
@@ -9,17 +10,16 @@ export const Container = styled.div`
   place-items: center;
 `
 
-export const ImageWrap = styled.div`
-  position: absolute;
+export const LightBackgroundImage = styled(BackgroundLightSVG)`
+  position: fixed;
   z-index: -1;
-  width: 100vw;
-  height: 100vh;
+
+  inset: 0;
 `
 
-export const BackgroundImage = (props: ImageProps) => {
-  return (
-    <ImageWrap>
-      <NextImage {...props} />
-    </ImageWrap>
-  )
-}
+export const DarkBackgroundImage = styled(BackgroundDarkSVG)`
+  position: fixed;
+  z-index: -1;
+
+  inset: 0;
+`
