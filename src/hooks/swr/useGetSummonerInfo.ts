@@ -9,7 +9,7 @@ const useGetSummonerInfo = (summonerName: string) => {
   >(`/api/summoner-by-name/${summonerName}`, axios.get)
 
   return {
-    data: axiosData.data,
+    data: axiosData?.data,
     error: {
       code: axiosError?.response?.status,
       message: axiosError?.response?.statusText,

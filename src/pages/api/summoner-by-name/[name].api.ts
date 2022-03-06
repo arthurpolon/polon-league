@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { NextApiRequest, NextApiResponse } from 'next'
-import clone from '~utils/clone'
 
 export default async function handler(
   req: NextApiRequest,

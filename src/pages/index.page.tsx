@@ -12,7 +12,9 @@ const Home = () => {
   return (
     <div>
       <Title>Teste style</Title>
-      <button onClick={toggleTheme}>Toggle</button>
+      <button onClick={toggleTheme} type='button'>
+        Toggle
+      </button>
     </div>
   )
 }
