@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import resToImage from '~utils/resToImage'
+import convertArrayBufferToBlob from '~utils/convertArrayBufferToBlob'
 
 const Image = () => {
   const [img, setImg] = useState('')
@@ -10,7 +10,7 @@ const Image = () => {
       { responseType: 'arraybuffer' },
     )
 
-    const image = resToImage(data)
+    const image = convertArrayBufferToBlob(data)
 
     setImg(image)
   }

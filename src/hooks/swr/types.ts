@@ -7,3 +7,8 @@ export interface ISummonerInfo {
   revisionDate: number
   summonerLevel: number
 }
+
+export interface IUseGetGameVersionsResponse {
+  allGameVersions?: Array<string>
+  currentGameVersion?: string
+}

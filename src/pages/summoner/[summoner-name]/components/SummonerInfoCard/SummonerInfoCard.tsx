@@ -1,44 +1,39 @@
-import useSWR from 'swr'
-import ddragonApi from '~services/api'
+import Skeleton from 'react-loading-skeleton'
 import { ISummonerInfoCardProps } from './types'
-import resToImage from '~utils/resToImage'
 import {
   Container,
   NameAndLevel,
   ProfileIcon,
   RankedTier,
-  SkeletonProfileIcon,
+  IconWrapper,
 } from './styled'
-
-const fetcher = url =>
-  ddragonApi.get(url, { responseType: 'arraybuffer' }).then(res => res.data)
+import useGetProfileIcon from '~hooks/swr/useGetProfileIcon'
+import capitalize from '~utils/capitalize'
 
 const SummonerInfoCard = (props: ISummonerInfoCardProps) => {
-  const { data } = useSWR(
-    `/cdn/12.4.1/img/profileicon/${props.summonerInfo.profileIconId}.png`,
-    fetcher,
-  )
+  const profileIcon = useGetProfileIcon(props.summonerInfo.profileIconId)
+
   const { name, summonerLevel } = props.summonerInfo
 
   const renderRankedTiers = () => {
     const soloRankInfo = props.rankedInfo.filter(
-      info => info.queueType === 'RANKED_SOLO_5x5',
+      info => info?.queueType === 'RANKED_SOLO_5x5',
     )[0]
     const flexRankInfo = props.rankedInfo.filter(
-      info => info.queueType === 'RANKED_FLEX_SR',
+      info => info?.queueType === 'RANKED_FLEX_SR',
     )[0]
 
     return (
       <>
-        <RankedTier>
+        <RankedTier key='solo-duo-tier'>
           {`Solo/Duo -
-            ${soloRankInfo?.tier.toLowerCase() || 'Unranked'}
+            ${capitalize(soloRankInfo?.tier) || 'Unranked'}
             ${soloRankInfo?.rank || ''}
           `}
         </RankedTier>
-        <RankedTier>
+        <RankedTier key='flex-tier'>
           {`Flex -
-            ${flexRankInfo?.tier.toLowerCase() || 'Unranked'}
+            ${capitalize(flexRankInfo?.tier) || 'Unranked'}
             ${flexRankInfo?.rank || ''}
           `}
         </RankedTier>
@@ -49,12 +44,18 @@ const SummonerInfoCard = (props: ISummonerInfoCardProps) => {
   return (
     <>
       <Container>
-        {data ? (
-          <ProfileIcon src={resToImage(data)} alt='Profile icon' />
-        ) : (
-          <SkeletonProfileIcon />
-        )}
-
+        <IconWrapper>
+          {profileIcon ? (
+            <ProfileIcon
+              src={profileIcon}
+              layout='fixed'
+              width={120}
+              height={120}
+            />
+          ) : (
+            <Skeleton width={120} height={120} borderRadius='50%' />
+          )}
+        </IconWrapper>
         <div>
           <NameAndLevel>
             {name} - Level {summonerLevel}

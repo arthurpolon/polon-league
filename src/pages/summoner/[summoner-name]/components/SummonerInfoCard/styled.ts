@@ -1,3 +1,4 @@
+import NextImage from 'next/image'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -17,8 +18,6 @@ export const RankedTier = styled.div`
   font-size: 16px;
   font-weight: bold;
 
-  text-transform: capitalize;
-
   & + & {
     margin-top: 8px;
   }
@@ -31,24 +30,18 @@ export const NameAndLevel = styled.h2`
   margin-bottom: 16px;
 
   background-image: ${p => p.theme.gradient};
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `
 
-export const ProfileIcon = styled.img`
+export const IconWrapper = styled.div`
   width: 120px;
   height: 120px;
 
-  border-radius: 100%;
-  background-color: #c4c4c4;
   margin-right: 28px;
 `
 
-export const SkeletonProfileIcon = styled.div`
-  width: 120px;
-  height: 120px;
-
-  border-radius: 100%;
-  background-color: #c4c4c4;
-  margin-right: 28px;
+export const ProfileIcon = styled(NextImage)`
+  border-radius: 50%;
 `

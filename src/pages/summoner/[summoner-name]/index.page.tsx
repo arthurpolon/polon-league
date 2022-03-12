@@ -1,10 +1,5 @@
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { useRouter } from 'next/dist/client/router'
-import { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import useGetSummonerInfo from '~hooks/swr/useGetSummonerInfo'
-import resToImage from '~utils/resToImage'
 import SummonerInfoCard from './components/SummonerInfoCard/SummonerInfoCard'
 import { MainContent, SideBar } from './styled'
 import { ISummonerPageProps } from './types'
@@ -71,7 +66,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
     fallback: 'blocking',
