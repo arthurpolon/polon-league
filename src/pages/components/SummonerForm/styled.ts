@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import NextImage from 'next/image'
 
 export const Container = styled.div`
   background-color: ${p => p.theme.background};
@@ -12,8 +11,6 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 `
-
-export const Icon = styled(NextImage)``
 
 export const IconDescription = styled.span`
   color: #9347b1;
@@ -73,7 +70,7 @@ export const Button = styled.button`
 
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  background: linear-gradient(#fd749b, #281ac8);
+  background: ${p => p.theme.gradient};
 
   transition: all 0.3s ease;
 

@@ -5,5 +5,7 @@ declare module 'styled-components' {
     name: 'light' | 'dark'
     textColor: string
     background: string
+
+    gradient: string
   }
 }
