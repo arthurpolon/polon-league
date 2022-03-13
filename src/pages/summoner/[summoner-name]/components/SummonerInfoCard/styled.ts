@@ -10,10 +10,14 @@ export const Container = styled.div`
   padding: 32px;
 
   border-radius: 10px;
-  background-color: white;
+  background-color: ${p => p.theme.background};
 
   max-width: 525px;
+
+  outline: ${p => p.theme.border};
+  box-shadow: ${p => p.theme.boxShadow};
 `
+
 export const RankedTier = styled.div`
   font-size: 16px;
   font-weight: bold;

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
+import ThemeButton from '~pages/components/ThemeButton/ThemeButton'
 import LoadingScreen from './components/LoadingScreen/LoadingScreen'
 import SummonerInfoCard from './components/SummonerInfoCard/SummonerInfoCard'
 import { MainContent, SideBar } from './styled'
@@ -21,6 +22,7 @@ const SummonerPage = (props: ISummonerPageProps) => {
           summonerInfo={props.summonerInfo}
           rankedInfo={props.rankedInfo}
         />
+        <ThemeButton />
         <h1>SummonerPage</h1>
         <br />
         <h2>

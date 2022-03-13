@@ -8,7 +8,8 @@ export const SideBar = styled.div`
   width: 290px;
   height: 100vh;
 
-  border: 1px solid gray;
+  border-right: ${p => p.theme.border};
+  background: ${p => p.theme.background};
 `
 
 export const MainContent = styled.div`
@@ -19,6 +20,5 @@ export const MainContent = styled.div`
   width: calc(100vw - 290px);
   height: 100vh;
 
-  border: 1px solid gray;
-  background: radial-gradient(circle at center, #f1e1ef, #fff9fe);
+  background: ${p => p.theme.secondaryBackground};
 `
