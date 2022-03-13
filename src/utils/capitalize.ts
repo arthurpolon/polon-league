@@ -1,4 +1,4 @@
-const capitalize = (text: string) => {
+const capitalize = (text = '') => {
   return text
     .trim()
     .toLowerCase()

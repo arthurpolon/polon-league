@@ -1,10 +1,18 @@
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
+import LoadingScreen from './components/LoadingScreen/LoadingScreen'
 import SummonerInfoCard from './components/SummonerInfoCard/SummonerInfoCard'
 import { MainContent, SideBar } from './styled'
 import { ISummonerPageProps } from './types'
 
 const SummonerPage = (props: ISummonerPageProps) => {
+  const { isFallback } = useRouter()
+
+  if (isFallback) {
+    return <LoadingScreen />
+  }
+
   return (
     <div>
       <SideBar />
@@ -69,7 +77,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
-    fallback: 'blocking',
+    fallback: true,
   }
 }
 
