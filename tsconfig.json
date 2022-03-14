@@ -32,5 +32,5 @@
 
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"],
-  "files": ["src/styles/styled.d.ts"]
+  "files": ["src/styles/theme.d.ts"]
 }

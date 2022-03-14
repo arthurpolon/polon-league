@@ -1,4 +1,4 @@
-import SummonerForm from '~pages/components/SummonerForm'
+import SummonerForm from '~pages/components/SummonerForm/SummonerForm'
 import { LightBackgroundImage, Container, DarkBackgroundImage } from './styled'
 import BackToHome from './components/BackToHome/BackToHome'
 import ThemeButton from '~pages/components/ThemeButton/ThemeButton'

@@ -3,7 +3,9 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import ThemeButton from '~pages/components/ThemeButton/ThemeButton'
 import LoadingScreen from './components/LoadingScreen/LoadingScreen'
+import MostPlayedChampionCard from './components/MostPlayedChampionCard/MostPlayedChampionCard'
 import SummonerInfoCard from './components/SummonerInfoCard/SummonerInfoCard'
+import VictoryPercentageCard from './components/VictoryPercentageCard/VictoryPercentageCard'
 import { MainContent, SideBar } from './styled'
 import { ISummonerPageProps } from './types'
 
@@ -16,14 +18,17 @@ const SummonerPage = (props: ISummonerPageProps) => {
 
   return (
     <div>
-      <SideBar />
+      <SideBar>
+        <ThemeButton />
+      </SideBar>
       <MainContent>
         <SummonerInfoCard
           summonerInfo={props.summonerInfo}
           rankedInfo={props.rankedInfo}
         />
-        <ThemeButton />
-        <h1>SummonerPage</h1>
+        <VictoryPercentageCard />
+        <MostPlayedChampionCard />
+        {/* <h1>SummonerPage</h1>
         <br />
         <h2>
           {props.rankedInfo.map(info => (
@@ -36,7 +41,7 @@ const SummonerPage = (props: ISummonerPageProps) => {
         <h2>
           Most played champion
           {props.championsMastery[0].championId}
-        </h2>
+        </h2> */}
       </MainContent>
     </div>
   )

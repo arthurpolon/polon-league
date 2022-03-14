@@ -20,5 +20,15 @@ export const MainContent = styled.div`
   width: calc(100vw - 290px);
   height: 100vh;
 
+  display: grid;
+  grid-template-areas:
+    'summonerInfo        mostPlayedChampion'
+    'victoryPercentage   mostPlayedChampion';
+
+  row-gap: 60px;
+  column-gap: 60px;
+  justify-items: center;
+  align-items: center;
+
   background: ${p => p.theme.secondaryBackground};
 `

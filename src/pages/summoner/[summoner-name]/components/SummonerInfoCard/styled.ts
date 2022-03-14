@@ -7,12 +7,17 @@ export const Container = styled.div`
   align-items: center;
   justify-content: flex-start;
 
+  grid-area: summonerInfo;
+  align-self: end;
+  justify-self: end;
+
   padding: 32px;
 
   border-radius: 10px;
   background-color: ${p => p.theme.background};
 
-  max-width: 525px;
+  width: min(37vw, 525px);
+  min-height: 220px;
 
   outline: ${p => p.theme.border};
   box-shadow: ${p => p.theme.boxShadow};
