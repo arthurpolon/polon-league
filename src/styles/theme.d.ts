@@ -14,5 +14,6 @@ declare module 'styled-components' {
     boxShadow: string
 
     gradient: string
+    secondaryGradient: string
   }
 }

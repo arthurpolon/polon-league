@@ -1,6 +1,6 @@
-import { ISummonerInfo, TRankedInfo } from '../../types'
+import { ISummonerInfo, IRankedInfo } from '../../types'
 
 export interface ISummonerInfoCardProps {
   summonerInfo: ISummonerInfo
-  rankedInfo: TRankedInfo
+  rankedInfo: IRankedInfo
 }

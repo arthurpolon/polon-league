@@ -15,6 +15,7 @@ export const light: DefaultTheme = {
     'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px',
 
   gradient: 'linear-gradient(#fd749b, #281ac8)',
+  secondaryGradient: 'linear-gradient(#FC58B3, #FEAE68)',
 }
 
 export const dark: DefaultTheme = {
@@ -30,6 +31,7 @@ export const dark: DefaultTheme = {
   boxShadow: 'none',
 
   gradient: 'linear-gradient(#fd749b, #281ac8)',
+  secondaryGradient: 'linear-gradient(#FC58B3, #FEAE68)',
 }
 
 const Themes: { [key in TTheme]: DefaultTheme } = {

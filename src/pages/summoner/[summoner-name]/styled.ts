@@ -12,14 +12,22 @@ export const SideBar = styled.div`
   background: ${p => p.theme.background};
 `
 
-export const MainContent = styled.div`
+export const MainContainer = styled.div`
   position: fixed;
   top: 0;
   right: 0;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: calc(100vw - 290px);
   height: 100vh;
 
+  background: ${p => p.theme.secondaryBackground};
+`
+
+export const Content = styled.div`
   display: grid;
   grid-template-areas:
     'summonerInfo        mostPlayedChampion'
@@ -27,8 +35,7 @@ export const MainContent = styled.div`
 
   row-gap: 60px;
   column-gap: 60px;
+
   justify-items: center;
   align-items: center;
-
-  background: ${p => p.theme.secondaryBackground};
 `

@@ -49,6 +49,9 @@ export const IconWrapper = styled.div`
   height: 120px;
 
   margin-right: 28px;
+
+  border-radius: 50%;
+  outline: ${p => p.theme.border};
 `
 
 export const ProfileIcon = styled(NextImage)`

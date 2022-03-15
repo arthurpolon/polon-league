@@ -16,25 +16,18 @@ const SummonerInfoCard = (props: ISummonerInfoCardProps) => {
   const { name, summonerLevel } = props.summonerInfo
 
   const renderRankedTiers = () => {
-    const soloRankInfo = props.rankedInfo.filter(
-      info => info?.queueType === 'RANKED_SOLO_5x5',
-    )[0]
-    const flexRankInfo = props.rankedInfo.filter(
-      info => info?.queueType === 'RANKED_FLEX_SR',
-    )[0]
-
     return (
       <>
         <RankedTier key='solo-duo-tier'>
           {`Solo/Duo -
-            ${capitalize(soloRankInfo?.tier) || 'Unranked'}
-            ${soloRankInfo?.rank || ''}
+            ${capitalize(props.rankedInfo.soloRankedInfo?.tier) || 'Unranked'}
+            ${props.rankedInfo.soloRankedInfo?.rank || ''}
           `}
         </RankedTier>
         <RankedTier key='flex-tier'>
           {`Flex -
-            ${capitalize(flexRankInfo?.tier) || 'Unranked'}
-            ${flexRankInfo?.rank || ''}
+            ${capitalize(props.rankedInfo.flexRankedInfo?.tier) || 'Unranked'}
+            ${props.rankedInfo.flexRankedInfo?.rank || ''}
           `}
         </RankedTier>
       </>

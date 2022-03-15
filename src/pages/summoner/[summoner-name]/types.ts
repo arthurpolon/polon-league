@@ -11,31 +11,34 @@ export interface IChampionMastery {
 }
 
 export interface IRankedCommonFields {
-  veteran?: boolean
-  inactive?: boolean
-  hotStreak?: boolean
-  freshBlood?: boolean
+  veteran: boolean
+  inactive: boolean
+  hotStreak: boolean
+  freshBlood: boolean
 
-  wins?: number
-  losses?: number
-  leaguePoints?: number
+  wins: number
+  losses: number
+  leaguePoints: number
 
-  rank?: string
-  tier?: string
-  leagueId?: string
-  summonerId?: string
-  summonerName?: string
+  rank: string
+  tier: string
+  leagueId: string
+  summonerId: string
+  summonerName: string
 }
 
 export interface IRankedSoloInfo extends IRankedCommonFields {
-  queueType?: 'RANKED_SOLO_5x5'
+  queueType: 'RANKED_SOLO_5x5'
 }
 
 export interface IRankedFlexInfo extends IRankedCommonFields {
-  queueType?: 'RANKED_FLEX_SR'
+  queueType: 'RANKED_FLEX_SR'
 }
 
-export type TRankedInfo = Array<IRankedSoloInfo | IRankedFlexInfo>
+export type IRankedInfo = {
+  soloRankedInfo?: IRankedSoloInfo
+  flexRankedInfo?: IRankedFlexInfo
+}
 
 export interface ISummonerInfo {
   accountId: string
@@ -49,6 +52,6 @@ export interface ISummonerInfo {
 
 export interface ISummonerPageProps {
   summonerInfo: ISummonerInfo
-  rankedInfo: TRankedInfo
+  rankedInfo: IRankedInfo
   championsMastery: IChampionMastery[]
 }

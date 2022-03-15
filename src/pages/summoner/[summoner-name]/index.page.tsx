@@ -6,8 +6,8 @@ import LoadingScreen from './components/LoadingScreen/LoadingScreen'
 import MostPlayedChampionCard from './components/MostPlayedChampionCard/MostPlayedChampionCard'
 import SummonerInfoCard from './components/SummonerInfoCard/SummonerInfoCard'
 import VictoryPercentageCard from './components/VictoryPercentageCard/VictoryPercentageCard'
-import { MainContent, SideBar } from './styled'
-import { ISummonerPageProps } from './types'
+import { Content, MainContainer, SideBar } from './styled'
+import { IRankedInfo, ISummonerPageProps } from './types'
 
 const SummonerPage = (props: ISummonerPageProps) => {
   const { isFallback } = useRouter()
@@ -21,28 +21,16 @@ const SummonerPage = (props: ISummonerPageProps) => {
       <SideBar>
         <ThemeButton />
       </SideBar>
-      <MainContent>
-        <SummonerInfoCard
-          summonerInfo={props.summonerInfo}
-          rankedInfo={props.rankedInfo}
-        />
-        <VictoryPercentageCard />
-        <MostPlayedChampionCard />
-        {/* <h1>SummonerPage</h1>
-        <br />
-        <h2>
-          {props.rankedInfo.map(info => (
-            <div>
-              {info.queueType} - {info.tier} {info.rank}
-            </div>
-          ))}
-        </h2>
-        <br />
-        <h2>
-          Most played champion
-          {props.championsMastery[0].championId}
-        </h2> */}
-      </MainContent>
+      <MainContainer>
+        <Content>
+          <SummonerInfoCard
+            summonerInfo={props.summonerInfo}
+            rankedInfo={props.rankedInfo}
+          />
+          <VictoryPercentageCard rankedInfo={props.rankedInfo} />
+          <MostPlayedChampionCard />
+        </Content>
+      </MainContainer>
     </div>
   )
 }
@@ -61,17 +49,29 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { data: summonerInfo } = await api.get(
       `/summoner/v4/summoners/by-name/${summonerName}`,
     )
-    const { data: rankedInfo } = await api.get(
+    const { data: rankedInfoData } = await api.get(
       `/league/v4/entries/by-summoner/${summonerInfo.id}`,
     )
     const { data: championsMastery } = await api.get(
       `/champion-mastery/v4/champion-masteries/by-summoner/${summonerInfo.id}`,
     )
 
+    const soloRankedInfo = rankedInfoData.filter(
+      info => info?.queueType === 'RANKED_SOLO_5x5',
+    )[0]
+    const flexRankedInfo = rankedInfoData.filter(
+      info => info?.queueType === 'RANKED_FLEX_SR',
+    )[0]
+
+    const rankedInfo: IRankedInfo = {}
+
+    if (soloRankedInfo) rankedInfo.soloRankedInfo = soloRankedInfo
+    if (flexRankedInfo) rankedInfo.flexRankedInfo = flexRankedInfo
+
     return {
       props: {
-        summonerInfo,
         rankedInfo,
+        summonerInfo,
         championsMastery,
       },
       revalidate: 60 * 60 * 0.5 /* 30 minutes */,
