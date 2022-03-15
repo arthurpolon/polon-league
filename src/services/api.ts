@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const api = axios.create({
-  baseURL: 'https://api.github.com',
+const ddragonApi = axios.create({
+  baseURL: 'http://ddragon.leagueoflegends.com',
 })
 
-export default api
+export default ddragonApi
