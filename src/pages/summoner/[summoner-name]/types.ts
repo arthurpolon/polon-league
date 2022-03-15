@@ -1,3 +1,5 @@
+import { ParsedUrlQuery } from 'querystring'
+
 export interface IChampionMastery {
   championId: number
   championLevel: number
@@ -54,4 +56,7 @@ export interface ISummonerPageProps {
   summonerInfo: ISummonerInfo
   rankedInfo: IRankedInfo
   championsMastery: IChampionMastery[]
+}
+export interface IParams extends ParsedUrlQuery {
+  'summoner-name': string
 }

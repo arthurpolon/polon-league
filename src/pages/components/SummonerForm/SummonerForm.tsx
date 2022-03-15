@@ -16,7 +16,11 @@ const SummonerForm = () => {
   const router = useRouter()
   const { register, handleSubmit } = useForm()
 
-  const onSubmit = (data: { summonerName: string }) => {
+  interface IFormData {
+    summonerName: string
+  }
+
+  const onSubmit = (data: IFormData) => {
     router.push(`/summoner/${data.summonerName}`)
   }
 
@@ -26,11 +30,14 @@ const SummonerForm = () => {
       <IconDescription>Polon League</IconDescription>
       <Title>Welcome Summoner</Title>
       <SubTitle>Enter your summoner name to start</SubTitle>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form
+        onSubmit={handleSubmit(formData => {
+          onSubmit(formData as IFormData)
+        })}
+      >
         <Input
           required
           type='text'
-          name='summoner-name'
           placeholder='Summoner name'
           {...register('summonerName')}
         />

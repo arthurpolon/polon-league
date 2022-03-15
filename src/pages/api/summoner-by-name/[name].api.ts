@@ -12,7 +12,7 @@ export default async function handler(
       `https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${name}`,
       {
         headers: {
-          'X-Riot-Token': process.env.RIOT_DEVELOPMENT_KEY,
+          'X-Riot-Token': process.env.RIOT_DEVELOPMENT_KEY || '',
         },
       },
     )

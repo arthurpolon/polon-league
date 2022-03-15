@@ -1,4 +1,6 @@
-const convertArrayBufferToBlob = (buffer: ArrayBuffer | undefined): string => {
+const convertArrayBufferToBlob = (
+  buffer: ArrayBuffer | undefined,
+): string | undefined => {
   if (!buffer) return undefined
 
   const blob = new Blob([buffer], {

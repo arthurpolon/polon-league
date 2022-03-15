@@ -1,13 +1,14 @@
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
+import { ParsedUrlQuery } from 'querystring'
 import ThemeButton from '~pages/components/ThemeButton/ThemeButton'
 import LoadingScreen from './components/LoadingScreen/LoadingScreen'
 import MostPlayedChampionCard from './components/MostPlayedChampionCard/MostPlayedChampionCard'
 import SummonerInfoCard from './components/SummonerInfoCard/SummonerInfoCard'
 import VictoryPercentageCard from './components/VictoryPercentageCard/VictoryPercentageCard'
 import { Content, MainContainer, SideBar } from './styled'
-import { IRankedInfo, ISummonerPageProps } from './types'
+import { IParams, IRankedInfo, ISummonerPageProps } from './types'
 
 const SummonerPage = (props: ISummonerPageProps) => {
   const { isFallback } = useRouter()
@@ -35,13 +36,16 @@ const SummonerPage = (props: ISummonerPageProps) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { 'summoner-name': summonerName } = params
+export const getStaticProps: GetStaticProps<
+  ISummonerPageProps,
+  IParams
+> = async ({ params }) => {
+  const summonerName = params?.['summoner-name']
 
   const api = axios.create({
     baseURL: 'https://br1.api.riotgames.com/lol',
     headers: {
-      'X-Riot-Token': process.env.RIOT_DEVELOPMENT_KEY,
+      'X-Riot-Token': process.env.RIOT_DEVELOPMENT_KEY || '',
     },
   })
 
@@ -57,10 +61,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     )
 
     const soloRankedInfo = rankedInfoData.filter(
-      info => info?.queueType === 'RANKED_SOLO_5x5',
+      (info: any) => info?.queueType === 'RANKED_SOLO_5x5',
     )[0]
     const flexRankedInfo = rankedInfoData.filter(
-      info => info?.queueType === 'RANKED_FLEX_SR',
+      (info: any) => info?.queueType === 'RANKED_FLEX_SR',
     )[0]
 
     const rankedInfo: IRankedInfo = {}
