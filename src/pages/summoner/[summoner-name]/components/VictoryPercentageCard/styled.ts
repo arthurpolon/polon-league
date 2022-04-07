@@ -57,7 +57,7 @@ export const SelectButton = styled.button<ISelectButtonProps>`
   font-weight: 800;
   line-height: 14px;
 
-  color: white;
+  color: ${p => (p.theme.isDark ? '#f0f0f0' : '#fff')};
 
   background: ${p => (p.isActive ? p.theme.gradient : '#bebebe')};
 `
@@ -67,7 +67,7 @@ export const Score = styled.div`
   align-items: center;
   justify-content: center;
 
-  color: ${p => (p.theme.isDark ? '#fff' : '#858585')};
+  color: ${p => p.theme.textColor};
 
   font-size: 18px;
   font-weight: 800;
