@@ -34,7 +34,7 @@ const VictoryPercentageCard = (props: IVictoryPercentageProps) => {
 
     const winsPercentage = (currentRankedInfo.wins * 100) / totalMatches
 
-    return Math.round(winsPercentage)
+    return Math.round(winsPercentage * 10) / 10 // limit to 1 decimal place
   }
 
   return (

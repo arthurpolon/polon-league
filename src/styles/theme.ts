@@ -6,6 +6,7 @@ export const light: DefaultTheme = {
   isDark: false,
 
   textColor: '#000',
+  error: '#f00',
 
   background: '#fff',
   secondaryBackground: '#FFF9FE',
@@ -22,12 +23,13 @@ export const dark: DefaultTheme = {
   name: 'dark',
   isDark: true,
 
-  textColor: '#fff',
+  textColor: '#f0f0f0',
+  error: '#FF7777',
 
-  background: '#1E0338',
-  secondaryBackground: '#1E0338',
+  background: '#0a0113',
+  secondaryBackground: '#0a0113',
 
-  border: '2px solid #f0f0f0',
+  border: '2px solid #9e9e9e',
   boxShadow: 'none',
 
   gradient: 'linear-gradient(#fd749b, #281ac8)',

@@ -81,6 +81,7 @@ export const getStaticProps: GetStaticProps<
       revalidate: 60 * 60 * 0.5 /* 30 minutes */,
     }
   } catch (err) {
+    console.log(err)
     return { notFound: true }
   }
 }

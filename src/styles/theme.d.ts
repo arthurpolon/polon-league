@@ -6,6 +6,7 @@ declare module 'styled-components' {
     isDark: boolean
 
     textColor: string
+    error: string
 
     background: string
     secondaryBackground: string
