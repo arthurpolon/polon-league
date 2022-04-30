@@ -10,7 +10,9 @@ const useGetProfileIcon = (iconId: number): string | undefined => {
   const { currentGameVersion } = useGetGameVersions()
 
   const { data: iconArrayBuffer } = useSWR(
-    () => `/cdn/${currentGameVersion}/img/profileicon/${iconId}.png`,
+    currentGameVersion
+      ? `/cdn/${currentGameVersion}/img/profileicon/${iconId}.png`
+      : null,
     arrayBufferFetcher,
   )
 
