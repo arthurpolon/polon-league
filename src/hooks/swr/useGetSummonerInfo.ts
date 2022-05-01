@@ -1,10 +1,10 @@
 import axios, { AxiosError, AxiosResponse } from 'axios'
 import useSWR from 'swr'
-import { ISummonerInfo } from './types'
+import { IRiotApiResponse } from '~interfaces/riotApiResponse'
 
 const useGetSummonerInfo = (summonerName: string) => {
   const { data: axiosData, error: axiosError } = useSWR<
-    AxiosResponse<ISummonerInfo>,
+    AxiosResponse<IRiotApiResponse['summonerInfo']>,
     AxiosError
   >(`/api/summoner-by-name/${summonerName}`, axios.get)
 
