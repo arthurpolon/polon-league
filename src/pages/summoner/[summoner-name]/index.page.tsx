@@ -1,14 +1,14 @@
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import { ParsedUrlQuery } from 'querystring'
 import ThemeButton from '~pages/components/ThemeButton/ThemeButton'
+import { IRiotApiResponse } from '~interfaces/riotApiResponse'
 import LoadingScreen from './components/LoadingScreen/LoadingScreen'
 import MostPlayedChampionCard from './components/MostPlayedChampionCard/MostPlayedChampionCard'
 import SummonerInfoCard from './components/SummonerInfoCard/SummonerInfoCard'
 import VictoryPercentageCard from './components/VictoryPercentageCard/VictoryPercentageCard'
 import { Content, MainContainer, SideBar } from './styled'
-import { IParams, IRankedInfo, ISummonerPageProps } from './types'
+import { IParams, ISummonerPageProps } from './types'
 
 const SummonerPage = (props: ISummonerPageProps) => {
   const { isFallback } = useRouter()
@@ -29,7 +29,7 @@ const SummonerPage = (props: ISummonerPageProps) => {
             rankedInfo={props.rankedInfo}
           />
           <VictoryPercentageCard rankedInfo={props.rankedInfo} />
-          <MostPlayedChampionCard />
+          <MostPlayedChampionCard championsMastery={props.championsMastery} />
         </Content>
       </MainContainer>
     </div>
@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps<
       (info: any) => info?.queueType === 'RANKED_FLEX_SR',
     )[0]
 
-    const rankedInfo: IRankedInfo = {}
+    const rankedInfo: IRiotApiResponse['rankedInfo'] = {}
 
     if (soloRankedInfo) rankedInfo.soloRankedInfo = soloRankedInfo
     if (flexRankedInfo) rankedInfo.flexRankedInfo = flexRankedInfo
