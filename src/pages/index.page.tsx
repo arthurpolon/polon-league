@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useTheme } from '~contexts/themeContext'
-import Loader from './components/Loader/Loader'
+import BlocksLoader from './components/BlocksLoader/BlocksLoader'
 
 const Title = styled.h1`
   margin-top: 100px;
@@ -16,7 +16,7 @@ const Home = () => {
       <button onClick={toggleTheme} type='button'>
         Toggle
       </button>
-      <Loader />
+      <BlocksLoader />
     </div>
   )
 }

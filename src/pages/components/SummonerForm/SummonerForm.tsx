@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Icons from '~components/Icons/Icons'
+import LeapLoader from '../LeapLoader/LeapLoader'
 
 import {
   Container,
@@ -75,7 +76,7 @@ const SummonerForm = () => {
         />
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         <Button disabled={isLoading} type='submit'>
-          Continue
+          {isLoading ? <LeapLoader /> : 'Continue'}
         </Button>
       </Form>
     </Container>

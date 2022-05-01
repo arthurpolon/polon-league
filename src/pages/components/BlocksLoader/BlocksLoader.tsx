@@ -1,6 +1,6 @@
 import { Container } from './styled'
 
-const Loader = () => {
+const BlocksLoader = () => {
   return (
     <Container>
       <div className='box-wrap'>
@@ -15,4 +15,4 @@ const Loader = () => {
   )
 }
 
-export default Loader
+export default BlocksLoader

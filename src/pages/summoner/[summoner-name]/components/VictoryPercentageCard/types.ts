@@ -1,7 +1,7 @@
-import { IRankedInfo } from '../../types'
+import { IRiotApiResponse } from '~interfaces/riotApiResponse'
 
 export interface IVictoryPercentageProps {
-  rankedInfo?: IRankedInfo
+  rankedInfo?: IRiotApiResponse['rankedInfo']
 }
 export interface ISelectButtonProps {
   isActive: boolean

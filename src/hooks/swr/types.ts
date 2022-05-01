@@ -1,14 +1,5 @@
-export interface ISummonerInfo {
-  accountId: string
-  id: string
-  name: string
-  puuid: string
-  profileIconId: number
-  revisionDate: number
-  summonerLevel: number
-}
+import { IDdragonApiResponse } from '~interfaces/ddragonApiResponse'
 
-export interface IUseGetGameVersionsResponse {
-  allGameVersions?: Array<string>
-  currentGameVersion?: string
+export type ITransformedChampionsObject = {
+  [championId: string]: IDdragonApiResponse['champions']['data']['IChampion']
 }

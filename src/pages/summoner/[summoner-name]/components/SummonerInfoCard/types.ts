@@ -1,6 +1,6 @@
-import { ISummonerInfo, IRankedInfo } from '../../types'
+import { IRiotApiResponse } from '~interfaces/riotApiResponse'
 
 export interface ISummonerInfoCardProps {
-  summonerInfo: ISummonerInfo
-  rankedInfo: IRankedInfo
+  summonerInfo: IRiotApiResponse['summonerInfo']
+  rankedInfo: IRiotApiResponse['rankedInfo']
 }

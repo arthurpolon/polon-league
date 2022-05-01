@@ -121,6 +121,10 @@ export const ErrorMessage = styled.div`
 export const Button = styled.button`
   color: white;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;

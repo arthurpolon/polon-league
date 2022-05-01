@@ -1,14 +1,14 @@
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import { ParsedUrlQuery } from 'querystring'
 import ThemeButton from '~pages/components/ThemeButton/ThemeButton'
+import { IRiotApiResponse } from '~interfaces/riotApiResponse'
 import LoadingScreen from './components/LoadingScreen/LoadingScreen'
 import MostPlayedChampionCard from './components/MostPlayedChampionCard/MostPlayedChampionCard'
 import SummonerInfoCard from './components/SummonerInfoCard/SummonerInfoCard'
 import VictoryPercentageCard from './components/VictoryPercentageCard/VictoryPercentageCard'
 import { Content, MainContainer, SideBar } from './styled'
-import { IParams, IRankedInfo, ISummonerPageProps } from './types'
+import { IParams, ISummonerPageProps } from './types'
 
 const SummonerPage = (props: ISummonerPageProps) => {
   const { isFallback } = useRouter()
@@ -29,7 +29,7 @@ const SummonerPage = (props: ISummonerPageProps) => {
             rankedInfo={props.rankedInfo}
           />
           <VictoryPercentageCard rankedInfo={props.rankedInfo} />
-          <MostPlayedChampionCard />
+          <MostPlayedChampionCard championsMastery={props.championsMastery} />
         </Content>
       </MainContainer>
     </div>
@@ -41,6 +41,7 @@ export const getStaticProps: GetStaticProps<
   IParams
 > = async ({ params }) => {
   const summonerName = params?.['summoner-name']
+  const encodedSummonerName = encodeURIComponent(summonerName as string)
 
   const api = axios.create({
     baseURL: 'https://br1.api.riotgames.com/lol',
@@ -51,7 +52,7 @@ export const getStaticProps: GetStaticProps<
 
   try {
     const { data: summonerInfo } = await api.get(
-      `/summoner/v4/summoners/by-name/${summonerName}`,
+      `/summoner/v4/summoners/by-name/${encodedSummonerName}`,
     )
     const { data: rankedInfoData } = await api.get(
       `/league/v4/entries/by-summoner/${summonerInfo.id}`,
@@ -67,7 +68,7 @@ export const getStaticProps: GetStaticProps<
       (info: any) => info?.queueType === 'RANKED_FLEX_SR',
     )[0]
 
-    const rankedInfo: IRankedInfo = {}
+    const rankedInfo: IRiotApiResponse['rankedInfo'] = {}
 
     if (soloRankedInfo) rankedInfo.soloRankedInfo = soloRankedInfo
     if (flexRankedInfo) rankedInfo.flexRankedInfo = flexRankedInfo
