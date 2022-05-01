@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Image from 'next/image'
 import CircleProgress from './components/CircleProgress'
 import {
   CircleProgressWrapper,
@@ -12,6 +13,8 @@ import {
   Title,
 } from './styled'
 import { IVictoryPercentageProps } from './types'
+
+import OkEmote from './images/okay-emote.webp'
 
 const VictoryPercentageCard = (props: IVictoryPercentageProps) => {
   const [selectedRank, setSelectedRank] = useState<'solo/duo' | 'flex'>(
@@ -27,7 +30,7 @@ const VictoryPercentageCard = (props: IVictoryPercentageProps) => {
 
   const getWinPercentage = () => {
     if (!currentRankedInfo) {
-      return 100
+      return 0
     }
 
     const totalMatches = currentRankedInfo.wins + currentRankedInfo.losses
@@ -36,6 +39,8 @@ const VictoryPercentageCard = (props: IVictoryPercentageProps) => {
 
     return Math.round(winsPercentage * 10) / 10 // limit to 1 decimal place
   }
+
+  const winPercentage = getWinPercentage()
 
   return (
     <Container>
@@ -79,9 +84,13 @@ const VictoryPercentageCard = (props: IVictoryPercentageProps) => {
         </ScoreboardWrapper>
       </TextContent>
       <CircleProgressWrapper>
-        <PercentageNumber>{getWinPercentage()}%</PercentageNumber>
+        {winPercentage ? (
+          <PercentageNumber>{winPercentage}%</PercentageNumber>
+        ) : (
+          <Image src={OkEmote} layout='fixed' width={90} height={90} />
+        )}
         <CircleProgress
-          percentage={getWinPercentage()}
+          percentage={winPercentage || 100}
           width={150}
           height={150}
         />
