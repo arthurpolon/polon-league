@@ -1,11 +1,11 @@
-import Loader from '~pages/components/Loader/Loader'
+import BlocksLoader from '~pages/components/BlocksLoader/BlocksLoader'
 import { Container, Text } from './styled'
 
 const LoadingScreen = () => {
   return (
     <Container>
       <Text>Getting your game infos... </Text>
-      <Loader />
+      <BlocksLoader />
     </Container>
   )
 }
