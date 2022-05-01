@@ -41,6 +41,7 @@ export const getStaticProps: GetStaticProps<
   IParams
 > = async ({ params }) => {
   const summonerName = params?.['summoner-name']
+  const encodedSummonerName = encodeURIComponent(summonerName as string)
 
   const api = axios.create({
     baseURL: 'https://br1.api.riotgames.com/lol',
@@ -51,7 +52,7 @@ export const getStaticProps: GetStaticProps<
 
   try {
     const { data: summonerInfo } = await api.get(
-      `/summoner/v4/summoners/by-name/${summonerName}`,
+      `/summoner/v4/summoners/by-name/${encodedSummonerName}`,
     )
     const { data: rankedInfoData } = await api.get(
       `/league/v4/entries/by-summoner/${summonerInfo.id}`,
