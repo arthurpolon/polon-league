@@ -22,31 +22,52 @@ const MostPlayedChampionCard = (props: IMostPlayedChampionCard) => {
     mostPlayedChampionObject?.name,
   )
 
-  return (
-    <S.Container>
-      <S.Title>Most played champion </S.Title>
-      {championLoadingImage ? (
+  const renderChampionName = () => {
+    if (!allChampionsObject) {
+      return (
+        <S.ChampionName>
+          <Skeleton width={140} height={54} />
+        </S.ChampionName>
+      )
+    }
+
+    if (mostPlayedChampionObject) {
+      return (
+        <S.ChampionName>
+          {mostPlayedChampionObject.name}
+          <S.MasteryPoints>
+            {mostPlayedChampionMastery?.championPoints.toLocaleString()} pts
+          </S.MasteryPoints>
+        </S.ChampionName>
+      )
+    }
+
+    return <S.ChampionName>No games were found</S.ChampionName>
+  }
+  const renderImage = () => {
+    if (championLoadingImage) {
+      return (
         <S.ImageWrapper>
           <NextImage src={championLoadingImage} layout='fill' />
         </S.ImageWrapper>
-      ) : (
-        <Skeleton
-          width={380 * 0.546}
-          height={380}
-          enableAnimation={!allChampionsObject}
-          baseColor={isDark ? '#2f2f2f' : undefined}
-        />
-      )}
-      <S.ChampionName>
-        {mostPlayedChampionObject ? (
-          <>
-            {mostPlayedChampionObject.name} -{' '}
-            {mostPlayedChampionMastery?.championPoints.toLocaleString()} pts
-          </>
-        ) : (
-          'This players has no games'
-        )}
-      </S.ChampionName>
+      )
+    }
+
+    return (
+      <Skeleton
+        width={380 * 0.546}
+        height={380}
+        enableAnimation={!allChampionsObject}
+        baseColor={isDark ? '#2f2f2f' : undefined}
+      />
+    )
+  }
+
+  return (
+    <S.Container>
+      <S.Title>Most played champion </S.Title>
+      {renderImage()}
+      {renderChampionName()}
     </S.Container>
   )
 }

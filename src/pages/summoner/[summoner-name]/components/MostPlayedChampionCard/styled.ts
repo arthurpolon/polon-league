@@ -44,9 +44,19 @@ export const ImageWrapper = styled.div`
 `
 
 export const ChampionName = styled.h3`
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
   margin-top: 18px;
 
   font-size: 22px;
 
   color: ${p => p.theme.textColor};
+`
+
+export const MasteryPoints = styled.span`
+  display: block;
 `
