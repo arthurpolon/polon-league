@@ -1,8 +1,8 @@
-import { Container } from './styled'
+import * as S from './styled'
 
 const BlocksLoader = () => {
   return (
-    <Container>
+    <S.Container>
       <div className='box-wrap'>
         <div className='box one' />
         <div className='box two' />
@@ -11,7 +11,7 @@ const BlocksLoader = () => {
         <div className='box five' />
         <div className='box six' />
       </div>
-    </Container>
+    </S.Container>
   )
 }
 

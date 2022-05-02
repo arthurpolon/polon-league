@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import CircleProgress from './components/CircleProgress'
 import { ISelectButtonProps } from './types'
 
 export const Container = styled.div`

@@ -1,17 +1,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import CircleProgress from './components/CircleProgress'
-import {
-  CircleProgressWrapper,
-  Container,
-  PercentageNumber,
-  Score,
-  ScoreboardWrapper,
-  SelectButton,
-  SelectsWrapper,
-  TextContent,
-  Title,
-} from './styled'
+import * as S from './styled'
 import { IVictoryPercentageProps } from './types'
 
 import OkEmote from './images/okay-emote.webp'
@@ -43,49 +33,49 @@ const VictoryPercentageCard = (props: IVictoryPercentageProps) => {
   const winPercentage = getWinPercentage()
 
   return (
-    <Container>
-      <TextContent>
-        <Title>Victory percentage</Title>
-        <SelectsWrapper>
-          <SelectButton
+    <S.Container>
+      <S.TextContent>
+        <S.Title>Victory percentage</S.Title>
+        <S.SelectsWrapper>
+          <S.SelectButton
             type='button'
             onClick={handleClick('solo/duo')}
             isActive={selectedRank === 'solo/duo'}
           >
             Solo/Duo
-          </SelectButton>
-          <SelectButton
+          </S.SelectButton>
+          <S.SelectButton
             type='button'
             onClick={handleClick('flex')}
             isActive={selectedRank === 'flex'}
           >
             Flex
-          </SelectButton>
-        </SelectsWrapper>
-        <ScoreboardWrapper>
+          </S.SelectButton>
+        </S.SelectsWrapper>
+        <S.ScoreboardWrapper>
           {currentRankedInfo ? (
             <>
-              <Score>
+              <S.Score>
                 <span>Played</span>
                 <span>{currentRankedInfo.wins + currentRankedInfo.losses}</span>
-              </Score>
-              <Score>
+              </S.Score>
+              <S.Score>
                 <span>Wins</span>
                 <span>{currentRankedInfo.wins}</span>
-              </Score>
-              <Score>
+              </S.Score>
+              <S.Score>
                 <span>Losses</span>
                 <span>{currentRankedInfo.losses}</span>
-              </Score>
+              </S.Score>
             </>
           ) : (
-            <Score>This player is unranked</Score>
+            <S.Score>This player is unranked</S.Score>
           )}
-        </ScoreboardWrapper>
-      </TextContent>
-      <CircleProgressWrapper>
+        </S.ScoreboardWrapper>
+      </S.TextContent>
+      <S.CircleProgressWrapper>
         {winPercentage ? (
-          <PercentageNumber>{winPercentage}%</PercentageNumber>
+          <S.PercentageNumber>{winPercentage}%</S.PercentageNumber>
         ) : (
           <Image src={OkEmote} layout='fixed' width={90} height={90} />
         )}
@@ -94,8 +84,8 @@ const VictoryPercentageCard = (props: IVictoryPercentageProps) => {
           width={150}
           height={150}
         />
-      </CircleProgressWrapper>
-    </Container>
+      </S.CircleProgressWrapper>
+    </S.Container>
   )
 }
 

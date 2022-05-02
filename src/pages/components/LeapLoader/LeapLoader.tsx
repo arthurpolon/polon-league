@@ -1,12 +1,12 @@
-import { Container } from './styled'
+import * as S from './styled'
 
 const LeapLoader = () => {
   return (
-    <Container>
+    <S.Container>
       <div className='leap-frog__dot' />
       <div className='leap-frog__dot' />
       <div className='leap-frog__dot' />
-    </Container>
+    </S.Container>
   )
 }
 

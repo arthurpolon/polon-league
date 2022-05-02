@@ -5,16 +5,7 @@ import { useForm } from 'react-hook-form'
 import Icons from '~components/Icons/Icons'
 import LeapLoader from '../LeapLoader/LeapLoader'
 
-import {
-  Container,
-  IconDescription,
-  Title,
-  SubTitle,
-  Form,
-  Input,
-  Button,
-  ErrorMessage,
-} from './styled'
+import * as S from './styled'
 import { IFormData } from './types'
 
 const SummonerForm = () => {
@@ -57,29 +48,29 @@ const SummonerForm = () => {
   }
 
   return (
-    <Container>
+    <S.Container>
       <Icons type='logo' width={65} height={65} />
-      <IconDescription>Polon League</IconDescription>
-      <Title>Welcome Summoner</Title>
-      <SubTitle>Enter your summoner name to start</SubTitle>
-      <Form
+      <S.IconDescription>Polon League</S.IconDescription>
+      <S.Title>Welcome Summoner</S.Title>
+      <S.SubTitle>Enter your summoner name to start</S.SubTitle>
+      <S.Form
         onSubmit={handleSubmit(formData => {
           onSubmit(formData as IFormData)
         })}
       >
-        <Input
+        <S.Input
           required
           type='text'
           error={!!errorMessage}
           placeholder='Summoner name'
           {...register('summonerName')}
         />
-        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-        <Button disabled={isLoading} type='submit'>
+        {errorMessage && <S.ErrorMessage>{errorMessage}</S.ErrorMessage>}
+        <S.Button disabled={isLoading} type='submit'>
           {isLoading ? <LeapLoader /> : 'Continue'}
-        </Button>
-      </Form>
-    </Container>
+        </S.Button>
+      </S.Form>
+    </S.Container>
   )
 }
 

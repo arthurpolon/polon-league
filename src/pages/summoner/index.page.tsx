@@ -1,5 +1,5 @@
 import SummonerForm from '~pages/components/SummonerForm/SummonerForm'
-import { LightBackgroundImage, Container, DarkBackgroundImage } from './styled'
+import * as S from './styled'
 import BackToHome from './components/BackToHome/BackToHome'
 import ThemeButton from '~pages/components/ThemeButton/ThemeButton'
 import { useTheme } from '~contexts/themeContext'
@@ -9,12 +9,12 @@ const Summoner = () => {
 
   return (
     <>
-      <Container>
+      <S.Container>
         <SummonerForm />
         <BackToHome />
         <ThemeButton />
-        {isDark ? <DarkBackgroundImage /> : <LightBackgroundImage />}
-      </Container>
+        {isDark ? <S.DarkBackgroundImage /> : <S.LightBackgroundImage />}
+      </S.Container>
     </>
   )
 }

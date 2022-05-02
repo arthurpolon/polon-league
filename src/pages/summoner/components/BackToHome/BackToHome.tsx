@@ -1,12 +1,12 @@
 import Icons from '~components/Icons/Icons'
-import { Container, Text } from './styled'
+import * as S from './styled'
 
 const BackToHome = () => {
   return (
-    <Container type='button'>
+    <S.Container type='button'>
       <Icons type='home' width={24} height={24} />
-      <Text>Back to home </Text>
-    </Container>
+      <S.Text>Back to home </S.Text>
+    </S.Container>
   )
 }
 

@@ -1,12 +1,6 @@
 import Skeleton from 'react-loading-skeleton'
 import { ISummonerInfoCardProps } from './types'
-import {
-  Container,
-  NameAndLevel,
-  ProfileIcon,
-  RankedTier,
-  IconWrapper,
-} from './styled'
+import * as S from './styled'
 import useGetProfileIcon from '~hooks/swr/useGetProfileIcon'
 import capitalize from '~utils/capitalize'
 
@@ -18,28 +12,28 @@ const SummonerInfoCard = (props: ISummonerInfoCardProps) => {
   const renderRankedTiers = () => {
     return (
       <>
-        <RankedTier key='solo-duo-tier'>
+        <S.RankedTier key='solo-duo-tier'>
           {`Solo/Duo -
             ${capitalize(props.rankedInfo.soloRankedInfo?.tier) || 'Unranked'}
             ${props.rankedInfo.soloRankedInfo?.rank || ''}
           `}
-        </RankedTier>
-        <RankedTier key='flex-tier'>
+        </S.RankedTier>
+        <S.RankedTier key='flex-tier'>
           {`Flex -
             ${capitalize(props.rankedInfo.flexRankedInfo?.tier) || 'Unranked'}
             ${props.rankedInfo.flexRankedInfo?.rank || ''}
           `}
-        </RankedTier>
+        </S.RankedTier>
       </>
     )
   }
 
   return (
     <>
-      <Container>
-        <IconWrapper>
+      <S.Container>
+        <S.IconWrapper>
           {profileIcon ? (
-            <ProfileIcon
+            <S.ProfileIcon
               src={profileIcon}
               layout='fixed'
               width={120}
@@ -48,14 +42,14 @@ const SummonerInfoCard = (props: ISummonerInfoCardProps) => {
           ) : (
             <Skeleton width={120} height={120} borderRadius='50%' />
           )}
-        </IconWrapper>
+        </S.IconWrapper>
         <div>
-          <NameAndLevel>
+          <S.NameAndLevel>
             {name} - Level {summonerLevel}
-          </NameAndLevel>
+          </S.NameAndLevel>
           {renderRankedTiers()}
         </div>
-      </Container>
+      </S.Container>
     </>
   )
 }

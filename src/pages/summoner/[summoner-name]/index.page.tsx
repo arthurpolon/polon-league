@@ -7,7 +7,7 @@ import LoadingScreen from './components/LoadingScreen/LoadingScreen'
 import MostPlayedChampionCard from './components/MostPlayedChampionCard/MostPlayedChampionCard'
 import SummonerInfoCard from './components/SummonerInfoCard/SummonerInfoCard'
 import VictoryPercentageCard from './components/VictoryPercentageCard/VictoryPercentageCard'
-import { Content, MainContainer, SideBar } from './styled'
+import * as S from './styled'
 import { IParams, ISummonerPageProps } from './types'
 
 const SummonerPage = (props: ISummonerPageProps) => {
@@ -19,19 +19,19 @@ const SummonerPage = (props: ISummonerPageProps) => {
 
   return (
     <div>
-      <SideBar>
+      <S.SideBar>
         <ThemeButton />
-      </SideBar>
-      <MainContainer>
-        <Content>
+      </S.SideBar>
+      <S.MainContainer>
+        <S.Content>
           <SummonerInfoCard
             summonerInfo={props.summonerInfo}
             rankedInfo={props.rankedInfo}
           />
           <VictoryPercentageCard rankedInfo={props.rankedInfo} />
           <MostPlayedChampionCard championsMastery={props.championsMastery} />
-        </Content>
-      </MainContainer>
+        </S.Content>
+      </S.MainContainer>
     </div>
   )
 }

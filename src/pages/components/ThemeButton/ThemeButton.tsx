@@ -1,19 +1,19 @@
 import Icons from '~components/Icons/Icons'
 import { useTheme } from '~contexts/themeContext'
-import { Container } from './styled'
+import * as S from './styled'
 
 const ThemeButton = () => {
   const { isDark, toggleTheme } = useTheme()
 
   return (
-    <Container onClick={toggleTheme}>
+    <S.Container onClick={toggleTheme}>
       <Icons
         type={isDark ? 'sun' : 'moon'}
         width={24}
         height={24}
         color={isDark ? '#fff' : '#000'}
       />
-    </Container>
+    </S.Container>
   )
 }
 
