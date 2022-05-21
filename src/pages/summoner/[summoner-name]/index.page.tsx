@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import ThemeButton from '~pages/components/ThemeButton/ThemeButton'
 import { IRiotApiResponse } from '~interfaces/riotApiResponse'
 import LoadingScreen from './components/LoadingScreen/LoadingScreen'
 import MostPlayedChampionCard from './components/MostPlayedChampionCard/MostPlayedChampionCard'
@@ -9,6 +8,7 @@ import SummonerInfoCard from './components/SummonerInfoCard/SummonerInfoCard'
 import VictoryPercentageCard from './components/VictoryPercentageCard/VictoryPercentageCard'
 import * as S from './styled'
 import { IParams, ISummonerPageProps } from './types'
+import Sidebar from './components/Sidebar/Sidebar'
 
 const SummonerPage = (props: ISummonerPageProps) => {
   const { isFallback } = useRouter()
@@ -18,21 +18,17 @@ const SummonerPage = (props: ISummonerPageProps) => {
   }
 
   return (
-    <div>
-      <S.SideBar>
-        <ThemeButton />
-      </S.SideBar>
-      <S.MainContainer>
-        <S.Content>
-          <SummonerInfoCard
-            summonerInfo={props.summonerInfo}
-            rankedInfo={props.rankedInfo}
-          />
-          <VictoryPercentageCard rankedInfo={props.rankedInfo} />
-          <MostPlayedChampionCard championsMastery={props.championsMastery} />
-        </S.Content>
-      </S.MainContainer>
-    </div>
+    <S.Main>
+      <Sidebar />
+      <S.Content>
+        <SummonerInfoCard
+          summonerInfo={props.summonerInfo}
+          rankedInfo={props.rankedInfo}
+        />
+        <VictoryPercentageCard rankedInfo={props.rankedInfo} />
+        <MostPlayedChampionCard championsMastery={props.championsMastery} />
+      </S.Content>
+    </S.Main>
   )
 }
 
